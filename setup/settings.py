@@ -82,10 +82,16 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': env('DB_DRIVER'),
+        'USER': env('PG_USER'),
+        'PASSWORD':env('PG_PASSWORD'),
+        'NAME': env('PG_DB'),
+        'PORT': env('PG_PORT'),
+        'HOST': env('PG_HOST'),
     }
 }
+
+# DATABASE_URL="postgres://postgres:postgres@db:5432/khanto_db"
 
 
 # Password validation
@@ -110,9 +116,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
