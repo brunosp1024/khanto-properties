@@ -17,8 +17,8 @@ class DeletedMixin(models.Model):
     objects = CustomManager()
     dm_objects = models.Manager()
 
-    def delete(self, using=None, keep_parents=False):
-        self.deleted = datetime.now()
+    def delete(self):
+        self.deleted_at = datetime.now()
         self.save()
 
     class Meta:
