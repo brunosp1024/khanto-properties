@@ -1,7 +1,7 @@
 from apps.property.views import PropertyViewSet
 from rest_framework import routers
 
-app_name = 'api'
+app_name = 'property'
 
 router = routers.DefaultRouter()
 router.register(r'properties', PropertyViewSet)
