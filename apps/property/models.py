@@ -12,7 +12,9 @@ class Property(TimestampableMixin, DeletedMixin):
     guest_limit = models.PositiveIntegerField(default=1)
     bathroom_count = models.PositiveIntegerField(null=True, blank=True, default=0)
     pets_allowed = models.BooleanField(default=True)
-    cleaning_fee = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, default=0.0)
+    cleaning_fee = models.DecimalField(
+        max_digits=10, decimal_places=2, null=True, blank=True, default=0.0
+    )
     activation_date = models.DateField()
 
     class Meta:
