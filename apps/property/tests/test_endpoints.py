@@ -5,6 +5,8 @@ from model_bakery import baker
 from apps.property.models import Property
 
 
+pytestmark = pytest.mark.django_db
+
 class TestPropertyEndpoints:
 
     endpoint = '/api/v1/properties/'
