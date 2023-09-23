@@ -22,30 +22,44 @@ Desafio técnico lançado pela Seazone para a vaga de desenvolvedor full stack p
         $ cd khanto-properties/
 
 
-#### 2. Instale o Docker e o docker-compose seguindo as instruções na documentação
+#### 2. Cria uma cópia do arquivo `.env.example` com o nome `.env` e defina uma nova senha para a variável SECRET_KEY. Isso aumeta aumeta a segurança do projeto:
+
+    SECRET_KEY=exemploi3du7_6q39ydd0!ov$^tn%
+
+
+#### 3. Instale o Docker e o docker-compose seguindo as instruções na documentação
 
  - https://docs.docker.com/get-docker/
 
 
-#### 3. Rodar docker-compose para iniciar o sistema
+#### 4. Rodar docker-compose para iniciar o sistema
 
 ```shell script
 docker-compose up
 ```
 
-Esse comando executa as seguintes ações:
-- Cria e inicia os containers;
-- Aplica as migrações;
-- Carrega dados predefinidos no banco de dados;
-- Inicia o servidor;
+
+#### 5. Aplicar as migrações
+
+```shell script
+docker-compose exec api python manage.py migrate
+```
 
 
-#### 4. Defina uma nova senha para a variável SECRET_KEY no arquivo `.env` gerado. Isso aumeta aumeta a segurança do projeto:
+#### 6. Executar as fixtures para carregar os dados no banco
 
-    SECRET_KEY=exemploi3du7_6q39ydd0!ov$^tn%
+```shell script
+docker-compose exec api python manage.py loaddata properties.json
+```
+```shell script
+docker-compose exec api python manage.py loaddata advertisements.json
+```
+```shell script
+docker-compose exec api python manage.py loaddata reservations.json
+```
 
 
-#### 5. Criar um super usuário para acessar os endpoints do sistema
+#### 7. Criar um super usuário para acessar os endpoints do sistema
 
 ```shell script
 docker-compose exec api python manage.py createsuperuser
