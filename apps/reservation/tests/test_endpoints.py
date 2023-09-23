@@ -3,6 +3,7 @@ import pytest
 
 from datetime import datetime
 from model_bakery import baker
+from rest_framework import status
 from apps.reservation.models import Reservation
 
 
@@ -32,6 +33,33 @@ class TestReservationEndpoints:
             format='json'
         )
         assert response.status_code == expected_status_code
+    
+    def test_create_reservation_conflict(self, client):
+        # create the models and their relationship.
+        property = baker.make('Property')
+        advertisement = baker.make('Advertisement', property=property)
+        check_in_date = datetime(2023, 10, 1)
+        check_out_date = datetime(2023, 10, 5)
+        baker.make(
+            Reservation,
+            advertisement=advertisement,
+            check_in_date=check_in_date,
+            check_out_date=check_out_date,
+        )
+
+        # Simulate a request that would create a conflict with the existing reservation.
+        conflicting_check_in_date = datetime(2023, 10, 3)
+        conflicting_check_out_date = datetime(2023, 10, 7)
+        data = {
+            'advertisement': advertisement.advertisement_id,
+            'check_in_date': conflicting_check_in_date.isoformat(),
+            'check_out_date': conflicting_check_out_date.isoformat(),
+        }
+        response = client.post(self.endpoint, data, format='json')
+        print(response)
+
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert response.data == {'message': 'There is already a reservation for this property.'}
 
     def test_retrieve_one_reservation(self, client):
         reservation = baker.make('reservation.Reservation')
