@@ -6,15 +6,15 @@ Desafio técnico lançado pela Seazone para a vaga de desenvolvedor full stack p
 
 ## Tecnologias utilizadas 🧑‍💻:
 
-Python
-Django e Django REST framework
-Docker
-Pytest
-Swagger
++ Python
++ Django e Django REST framework
++ Docker
++ Pytest
++ Swagger
 
 ***
 
-## Executar o projeto 🚀
+## Executando o projeto 🚀
 
 #### 1. Clone o projeto do repositório no github e acesse o diretório baixado
 
@@ -22,20 +22,15 @@ Swagger
         $ cd khanto-properties/
 
 
-#### 2. Defina uma nova senha para a variável SECRET_KEY no arquivo `.env`. Isso aumeta aumeta a segurança do projeto:
-
-    SECRET_KEY=exemploi3du7_6q39ydd0!ov$^tn%
-
-
-#### 3. Instale o Docker e o docker-compose seguindo as instruções na documentação
+#### 2. Instale o Docker e o docker-compose seguindo as instruções na documentação
 
  - https://docs.docker.com/get-docker/
 
 
-#### 4. Rodar docker-compose para iniciar o sistema
+#### 3. Rodar docker-compose para iniciar o sistema
 
 ```shell script
-docker-compose up -d
+docker-compose up
 ```
 
 Esse comando executa as seguintes ações:
@@ -43,6 +38,12 @@ Esse comando executa as seguintes ações:
 - Aplica as migrações;
 - Carrega dados predefinidos no banco de dados;
 - Inicia o servidor;
+
+
+#### 4. Defina uma nova senha para a variável SECRET_KEY no arquivo `.env` gerado. Isso aumeta aumeta a segurança do projeto:
+
+    SECRET_KEY=exemploi3du7_6q39ydd0!ov$^tn%
+
 
 #### 5. Criar um super usuário para acessar os endpoints do sistema
 
@@ -59,7 +60,7 @@ Requisições para as API's:
 |---|---|
 | `GET` | Retorna um ou todos os itens. |
 | `POST` | Cria um novo registro. |
-| `PUT`/`PATCH` Atualiza dados de um item. |
+| `PUT`/`PATCH` | Atualiza dados de um item. |
 | `DELETE` | Remove um item do sistema. |
 
 Estatus de respostas das API's
@@ -75,16 +76,14 @@ Estatus de respostas das API's
 
     + Authorization
  
-        username: "my_user"
-        password: 'minha_senha"
+        + username: "my_user"
+        + password: 'minha_senha"
+
 
 ### Documentação das API's com swagger
 
 No swagger é possível visualizar e acessar toda a documentação dos endpoints.
+Endereço url para o swagger: http://localhost:8000/api/v1/swagger/
 
-Endereço url para o swagger:
-    http://localhost:8000/api/v1/swagger/
-
-Para saber mais sobre essa ferramenta e seu funcionamento, acessar o link:
-    https://www.youtube.com/watch?v=3nl9AzttzBQ
+Para saber mais sobre essa ferramenta e seu funcionamento, acessar o link: https://www.youtube.com/watch?v=3nl9AzttzBQ
 
