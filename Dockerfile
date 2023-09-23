@@ -12,7 +12,3 @@ RUN pip install -r requirements.txt
 
 # Bundle app source
 COPY . .
-
-# # entrypoint to run the start.sh file
-RUN chmod +x start.sh
-ENTRYPOINT ["sh", "start.sh"]
