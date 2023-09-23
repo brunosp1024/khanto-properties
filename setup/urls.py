@@ -1,5 +1,6 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, reverse_lazy
+from django.views.generic import RedirectView
 
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -21,6 +22,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    path('', RedirectView.as_view(url=reverse_lazy('schema-swagger-ui'), permanent=False), name='index'),
     path('admin/', admin.site.urls),
     path('api/v1/', include('apps.property.urls', namespace='properties')),
     path('api/v1/', include('apps.advertisement.urls', namespace='advertisements')),
