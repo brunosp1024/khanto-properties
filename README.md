@@ -1,10 +1,10 @@
 # Khanto API rest - Seazone
 
-## Descrição do projeto 📄:
+## Descrição do projeto 📄
 
 Desafio técnico lançado pela Seazone para a vaga de desenvolvedor full stack python. O projeto consiste em 3 API's REST, os quais apresentam endpoints para imóveis, anúncios e reservas.
 
-## Tecnologias utilizadas 🧑‍💻:
+## Tecnologias utilizadas 🧑‍💻
 
 + Python
 + Django e Django REST framework
@@ -86,4 +86,12 @@ No swagger é possível visualizar e acessar toda a documentação dos endpoints
 Endereço url para o swagger: http://localhost:8000/api/v1/swagger/
 
 Para saber mais sobre essa ferramenta e seu funcionamento, acessar o link: https://www.youtube.com/watch?v=3nl9AzttzBQ
+
+***
+
+## Executando os testes 💡
+
+```shell script
+docker-compose exec api pytest
+```
 
