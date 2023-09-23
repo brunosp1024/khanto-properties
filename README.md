@@ -24,7 +24,12 @@ Desafio técnico lançado pela Seazone para a vaga de desenvolvedor full stack p
 
 #### 2. Cria uma cópia do arquivo `.env.example` com o nome `.env` e defina uma nova senha para a variável SECRET_KEY. Isso aumeta aumeta a segurança do projeto:
 
-    SECRET_KEY=exemploi3du7_6q39ydd0!ov$^tn%
+```shell script
+cp .env.example .env
+```
+```shell script
+SECRET_KEY=exemploi3du7_6q39ydd0!ov$^tn%
+```
 
 
 #### 3. Instale o Docker e o docker-compose seguindo as instruções na documentação
