@@ -2,13 +2,14 @@
 
 ## Descrição do projeto 📄
 
-Desafio técnico lançado pela Seazone para a vaga de desenvolvedor full stack python. O projeto consiste em 3 API's REST, os quais apresentam endpoints para imóveis, anúncios e reservas.
+O projeto consiste em 3 API's REST, os quais apresentam endpoints para imóveis, anúncios e reservas.
 
 ## Tecnologias utilizadas 🧑‍💻
 
 + Python
 + Django e Django REST framework
 + Docker
++ Celery
 + Pytest
 + Swagger
 
@@ -22,13 +23,13 @@ Desafio técnico lançado pela Seazone para a vaga de desenvolvedor full stack p
         $ cd khanto-properties/
 
 
-#### 2. Cria uma cópia do arquivo `.env.example` com o nome `.env` e defina uma nova senha para a variável SECRET_KEY. Isso aumeta aumeta a segurança do projeto:
+#### 2. Cria uma cópia do arquivo `.env.example` com o nome `.env` e defina uma nova senha para a variável SECRET_KEY. Isso aumeta a segurança do projeto:
 
 ```shell script
 cp .env.example .env
 ```
 ```shell script
-SECRET_KEY=exemploi3du7_6q39ydd0!ov$^tn%
+SECRET_KEY=exemplo_nova_senhai3du7_6q39ydd0!ov$^tn%
 ```
 
 
@@ -44,14 +45,7 @@ docker-compose up
 ```
 
 
-#### 5. Aplicar as migrações
-
-```shell script
-docker-compose exec api python manage.py migrate
-```
-
-
-#### 6. Executar as fixtures para carregar os dados no banco
+#### 5. Executar as fixtures para carregar os dados no banco. Seguir a ordem.
 
 ```shell script
 docker-compose exec api python manage.py loaddata properties.json
@@ -64,7 +58,7 @@ docker-compose exec api python manage.py loaddata reservations.json
 ```
 
 
-#### 7. Criar um super usuário para acessar os endpoints do sistema
+#### 6. Criar um super usuário para acessar os endpoints do sistema
 
 ```shell script
 docker-compose exec api python manage.py createsuperuser
@@ -105,6 +99,12 @@ No swagger é possível visualizar e acessar toda a documentação dos endpoints
 Endereço url para o swagger: http://localhost:8000/api/v1/swagger/
 
 Para saber mais sobre essa ferramenta e seu funcionamento, acessar o link: https://www.youtube.com/watch?v=3nl9AzttzBQ
+
+***
+
+## Visualizando as tasks do celery 💡
+
+Para acessar a fila de tarefas executadas pelo celery, acessar o endereço: http://localhost:5556
 
 ***
 
