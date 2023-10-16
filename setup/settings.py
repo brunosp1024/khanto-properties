@@ -2,6 +2,8 @@
 import os
 import environ
 from pathlib import Path
+from celery.schedules import crontab
+
 
 # settings to read '.env' file.
 env = environ.Env()
@@ -92,8 +94,6 @@ DATABASES = {
     }
 }
 
-# DATABASE_URL="postgres://postgres:postgres@db:5432/khanto_db"
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -150,4 +150,16 @@ SWAGGER_SETTINGS = {
             'type': 'basic'
       }
    }
+}
+
+# Celery settings
+CELERY_TIMEZONE = "America/Sao_Paulo"
+CELERY_BROKER_URL = env("CELERY_BROKER")
+CELERY_RESULT_BACKEND = env("CELERY_BACKEND")
+
+CELERY_BEAT_SCHEDULE = {
+    'delete-items-physically': {
+        'task': 'apps.core.tasks.delete_items_task',
+        'schedule': crontab(minute="*/10"),
+    },
 }
