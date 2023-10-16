@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': env('DB_DRIVER'),
-        'USER': env('PG_USER'),
-        'PASSWORD':env('PG_PASSWORD'),
-        'NAME': env('PG_DB'),
-        'PORT': env('PG_PORT'),
-        'HOST': env('PG_HOST'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'NAME': env('POSTGRES_DB'),
+        'PORT': env('POSTGRES_PORT'),
+        'HOST': env('POSTGRES_HOST'),
     }
 }
 
@@ -163,3 +163,12 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': crontab(minute="*/10"),
     },
 }
+
+# SMTP Settings
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
